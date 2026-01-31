@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# 🎨 AlgoCanvas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AlgoCanvas** is an interactive Data Structure and Algorithm visualization platform designed to help students and developers understand complex concepts through beautiful, real-time animations.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🟦 Data Structure Visualizers
+- **Arrays**: CRUD operations (Insert, Delete, Update, Search) with index tracking.
+- **Queues**: FIFO operations (Enqueue, Dequeue, Peek) with Front/Rear pointers.
+- **Linked Lists**: Node manipulation (Insert, Delete, Reverse) with pointer animations.
+- **Stacks**: LIFO operations and visualizations.
 
-## React Compiler
+### 🧠 Algorithm Problem Solvers
+- **Two Sum**: HashMap visualization for O(n) solution.
+- **Binary Numbers**: Queue-based number generation (1 to N).
+- **Cycle Detection**: Floyd's Tortoise and Hare algorithm visualization.
+- **Parentheses Matching**: Stack-based validity checker.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔐 Authentication
+- **Google Sign-In**: Powered by Firebase Authentication.
+- **User Sessions**: Persistent login state with `AuthContext`.
+- **Profile Management**: Displays user avatar and name.
 
-## Expanding the ESLint configuration
+### 🎨 Modern UI
+- **Glassmorphism**: Premium frosted glass effects.
+- **Dark/Light Mode**: Fully responsive theme toggle.
+- **Responsiveness**: Mobile-friendly layout using Tailwind CSS v4.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS v4, Lucide React (Icons)
+- **Routing**: React Router v7
+- **Auth**: Firebase v11
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+```bash
+git clone https://github.com/Dexter-2005/test.git
+cd test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install Dependencies
+```bash
+npm install
 ```
+
+### 3. Configure Firebase
+Create a project in [Firebase Console](https://console.firebase.google.com/), getting your web app config.
+Open `src/firebase/firebase.ts` and replace the placeholders:
+```typescript
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    // ... other keys
+};
+```
+> **Note**: The app runs safely without keys, but Sign In will be disabled.
+
+### 4. Run Locally
+```bash
+npm run dev
+```
+
+## 📄 License
+MIT
