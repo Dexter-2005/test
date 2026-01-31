@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-pink: #ff0087;
+  --color-platinum: #d3dad9;
+  --color-deep-black: #000000;
+}
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-deep-black);
+  color: var(--color-platinum);
+}
