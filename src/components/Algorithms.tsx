@@ -59,6 +59,48 @@ const Algorithms = () => {
                     color: 'text-yellow-500 bg-yellow-500/10'
                 }
             ]
+        },
+        {
+            category: 'Tree',
+            items: [
+                {
+                    title: 'Tree Traversals (DFS)',
+                    description: 'Explore Inorder, Preorder, and Postorder traversals on binary trees using depth-first search.',
+                    visualizerLink: '/tree/problems',
+                    gfgLink: 'https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/',
+                    difficulty: 'Easy',
+                    color: 'text-emerald-500 bg-emerald-500/10'
+                },
+                {
+                    title: 'AVL Tree Rotations',
+                    description: 'Self-balancing BST operations including left, right, left-right, and right-left rotations.',
+                    visualizerLink: '/avl/rotations',
+                    gfgLink: 'https://www.geeksforgeeks.org/avl-tree-set-1-insertion/',
+                    difficulty: 'Hard',
+                    color: 'text-red-500 bg-red-500/10'
+                }
+            ]
+        },
+        {
+            category: 'Graph',
+            items: [
+                {
+                    title: 'BFS Traversal',
+                    description: 'Breadth-First Search explores nodes level by level using a Queue data structure.',
+                    visualizerLink: '/traversals',
+                    gfgLink: 'https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/',
+                    difficulty: 'Medium',
+                    color: 'text-yellow-500 bg-yellow-500/10'
+                },
+                {
+                    title: 'DFS Traversal',
+                    description: 'Depth-First Search explores as far as possible along each branch using a Stack.',
+                    visualizerLink: '/traversals',
+                    gfgLink: 'https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/',
+                    difficulty: 'Medium',
+                    color: 'text-yellow-500 bg-yellow-500/10'
+                }
+            ]
         }
     ];
 

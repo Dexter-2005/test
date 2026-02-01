@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User as UserIcon } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
-    const { user, signInWithGoogle, logOut } = useAuth();
+    const { user, isLoggedIn, userName, logOut } = useAuth();
     const isDark = theme === 'dark';
 
     return (
@@ -26,16 +26,18 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-4">
-                {user ? (
+                {isLoggedIn ? (
                     <div className="flex items-center gap-4">
                         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border ${isDark ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}>
-                            {user.photoURL ? (
+                            {user?.photoURL ? (
                                 <img src={user.photoURL} alt="Profile" className="w-6 h-6 rounded-full" />
                             ) : (
-                                <UserIcon size={16} className={isDark ? 'text-white' : 'text-gray-700'} />
+                                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center text-white text-xs font-bold">
+                                    {userName?.charAt(0).toUpperCase() || 'U'}
+                                </div>
                             )}
                             <span className={`text-sm font-medium max-w-[100px] truncate ${isDark ? 'text-white' : 'text-gray-700'}`}>
-                                {user.displayName || 'User'}
+                                {userName || 'User'}
                             </span>
                         </div>
                         <button
@@ -47,14 +49,14 @@ const Navbar = () => {
                         </button>
                     </div>
                 ) : (
-                    <button
-                        onClick={signInWithGoogle}
+                    <Link
+                        to="/signin"
                         className={`px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${isDark
                             ? 'bg-white/10 hover:bg-white/20 text-white'
                             : 'bg-gray-900 text-white hover:bg-gray-800'}`}
                     >
                         <span>Sign In</span>
-                    </button>
+                    </Link>
                 )}
 
                 <button

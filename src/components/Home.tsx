@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 import Navbar from './Navbar';
-import { LayoutGrid, ListOrdered, Layers, GitCommitHorizontal, ArrowRight } from 'lucide-react';
+import { LayoutGrid, ListOrdered, Layers, GitCommitHorizontal, ArrowRight, GitBranch, Activity, Share2, Route } from 'lucide-react';
 
 const Home = () => {
     const { theme } = useTheme();
+    const { isLoggedIn, userName } = useAuth();
     const isDark = theme === 'dark';
 
     const ALGORITHMS = [
@@ -36,6 +38,34 @@ const Home = () => {
             color: 'from-teal-500 to-emerald-400',
             icon: GitCommitHorizontal
         },
+        {
+            name: 'Tree / Binary Tree',
+            description: 'Explore Tree structures and Traversals (Inorder, Preorder, Postorder).',
+            path: '/tree',
+            color: 'from-emerald-400 to-sky-400',
+            icon: GitBranch
+        },
+        {
+            name: 'AVL Tree',
+            description: 'Understand self-balancing trees and rotations (LL, RR, LR, RL).',
+            path: '/avl',
+            color: 'from-indigo-400 to-purple-400',
+            icon: Activity
+        },
+        {
+            name: 'Graph',
+            description: 'Master Graph algorithms including BFS and DFS traversals.',
+            path: '/graph',
+            color: 'from-orange-400 to-red-400',
+            icon: Share2
+        },
+        {
+            name: 'DFS/BFS Traversals',
+            description: 'Explore BFS and DFS graph traversal algorithms step-by-step.',
+            path: '/traversals',
+            color: 'from-violet-500 to-fuchsia-400',
+            icon: Route
+        },
     ];
 
     return (
@@ -49,12 +79,21 @@ const Home = () => {
             {/* Hero Section */}
             <main className="max-w-7xl mx-auto px-8 pt-20 pb-32">
                 <div className="text-center space-y-8 mb-24">
-                    <div className={`inline-flex items-center px-3 py-1 rounded-full border text-xs font-medium animate-pulse ${isDark
-                        ? 'border-sky-500/30 bg-sky-500/10 text-sky-400'
-                        : 'border-sky-500/50 bg-sky-50 text-sky-600'
-                        }`}>
-                        New: Cycle Detection Visualizer
-                    </div>
+                    {isLoggedIn ? (
+                        <div className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium ${isDark
+                            ? 'border-violet-500/30 bg-violet-500/10 text-violet-400'
+                            : 'border-violet-500/50 bg-violet-50 text-violet-600'
+                            }`}>
+                            👋 Welcome back, <span className="font-bold ml-1">{userName}</span>!
+                        </div>
+                    ) : (
+                        <div className={`inline-flex items-center px-3 py-1 rounded-full border text-xs font-medium animate-pulse ${isDark
+                            ? 'border-sky-500/30 bg-sky-500/10 text-sky-400'
+                            : 'border-sky-500/50 bg-sky-50 text-sky-600'
+                            }`}>
+                            New: DFS/BFS Traversals Visualizer
+                        </div>
+                    )}
                     <h1 className={`text-6xl md:text-8xl font-extrabold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'
                         }`}>
                         Visualize <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-cyan-500 to-teal-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">Algorithms</span> <br />

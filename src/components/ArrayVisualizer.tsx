@@ -403,6 +403,26 @@ const ArrayVisualizer = () => {
                         Create Array
                     </button>
                     <button
+                        onClick={() => {
+                            const count = Math.floor(Math.random() * 6) + 5;
+                            const randomNums = Array.from({ length: count }, () => Math.floor(Math.random() * 99) + 1);
+                            setInputValue(randomNums.join(' '));
+                            const newArray = randomNums.map((value) => ({
+                                id: idCounter.current++,
+                                value,
+                                isHighlighted: false,
+                                isAnimating: false
+                            }));
+                            setArray(newArray);
+                            setFoundIndex(null);
+                            setMessage(`✅ Random array created with ${count} elements.`);
+                        }}
+                        disabled={isAnimating}
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Random
+                    </button>
+                    <button
                         onClick={handleReset}
                         disabled={isAnimating}
                         className={`px-6 py-3 rounded-xl font-bold text-lg transition-all hover:scale-105 ${isDark

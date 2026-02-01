@@ -248,6 +248,25 @@ const QueueVisualizer = () => {
                         Load Queue
                     </button>
                     <button
+                        onClick={() => {
+                            const count = Math.floor(Math.random() * 4) + 5;
+                            const randomNums = Array.from({ length: count }, () => Math.floor(Math.random() * 99) + 1);
+                            setInputValue(randomNums.join(' '));
+                            const newQueue = randomNums.map((value) => ({
+                                id: idCounter.current++,
+                                value,
+                                isAnimating: false
+                            }));
+                            setQueue(newQueue);
+                            setPeekValue(null);
+                            showMessage(`✅ Random queue created with ${count} elements. Front is on the left.`);
+                        }}
+                        disabled={isAnimating}
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold text-lg hover:scale-105 hover:shadow-lg hover:shadow-fuchsia-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Random
+                    </button>
+                    <button
                         onClick={handleReset}
                         disabled={isAnimating}
                         className={`px-6 py-3 rounded-xl font-bold text-lg transition-all hover:scale-105 ${isDark

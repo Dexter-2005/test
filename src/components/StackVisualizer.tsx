@@ -197,6 +197,22 @@ const StackVisualizer = () => {
                     >
                         Load Elements
                     </button>
+                    <button
+                        onClick={() => {
+                            const count = Math.floor(Math.random() * 4) + 5;
+                            const values = Array.from({ length: count }, () => Math.floor(Math.random() * 99) + 1);
+                            const newElements = values.map((value) => ({
+                                id: idCounter.current++,
+                                value,
+                            }));
+                            setSourceArray(newElements);
+                            setInputValue('');
+                            showMessage(`Loaded ${count} random element(s) into the array.`);
+                        }}
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-lg hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 transition-all"
+                    >
+                        Random
+                    </button>
                 </div>
             </div>
 

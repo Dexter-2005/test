@@ -61,11 +61,11 @@ const ParenthesesMatcher = () => {
         setInputValue('');
     }, []);
 
-    const processStep = useCallback((
+    const processStep = useCallback(function recursiveStep(
         chars: CharInfo[],
         idx: number,
         currentStack: StackItem[]
-    ) => {
+    ) {
         if (isStoppedRef.current) return;
 
         // All characters processed
@@ -93,7 +93,7 @@ const ParenthesesMatcher = () => {
             // Skip non-bracket characters
             setStepMessage(`Skipping character '${currentChar.char}' (not a bracket)`);
             timeoutRef.current = setTimeout(() => {
-                processStep(chars, idx + 1, currentStack);
+                recursiveStep(chars, idx + 1, currentStack);
             }, ANIMATION_DELAY / 2);
             return;
         }
@@ -110,7 +110,7 @@ const ParenthesesMatcher = () => {
                 setAnimatingPush(null);
 
                 timeoutRef.current = setTimeout(() => {
-                    processStep(chars, idx + 1, newStack);
+                    recursiveStep(chars, idx + 1, newStack);
                 }, ANIMATION_DELAY / 2);
             }, ANIMATION_DELAY / 2);
             return;
@@ -143,7 +143,7 @@ const ParenthesesMatcher = () => {
                     setAnimatingPop(null);
 
                     timeoutRef.current = setTimeout(() => {
-                        processStep(chars, idx + 1, newStack);
+                        recursiveStep(chars, idx + 1, newStack);
                     }, ANIMATION_DELAY / 2);
                 }, ANIMATION_DELAY / 2);
                 return;
